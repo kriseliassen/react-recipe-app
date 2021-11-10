@@ -1,20 +1,32 @@
-import React, {useState, useEffect} from 'react';
+/* eslint-disable jsx-a11y/alt-text */
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [recipes, setRecipes] = useState(null);
+  console.log('state: recipes,', recipes)
 
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  const getRandomRecipe = () => {
+    fetch("/api/random")
+      .then(res => res.json())
+      .then(data => setRecipes(data.recipes));
+  }
+
+  const handleClick = () => {
+    getRandomRecipe()
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>{!data ? "Loading..." : data}</p>
       </header>
+      <button onClick={handleClick}>Click for random</button>
+      {recipes && recipes.map(recipe => 
+      <div key={recipe.id}>
+        <p>{recipe.title}</p>
+        <img src={recipe.image}/>
+      </div>
+      )}
     </div>
   );
 }
