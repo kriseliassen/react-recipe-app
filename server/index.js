@@ -12,12 +12,31 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const apiKey = process.env.SPOONACULAR_API_KEY
+const apiUrl = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`
 
 const readFilePromise = promisify(fs.readFile);
 const writeFilePromise = promisify(fs.writeFile);
 
-app.get("/api/random", async (_, res) => {
-  const url = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${apiKey}&tags=dinner`
+const readDatabase = async (path) => {
+  const data = await readFilePromise(path, 'utf-8')
+  console.log('read db', data)
+  return data;
+}
+
+const writeToDb = async (path, content) => {
+  await writeFilePromise(path, JSON.stringify(content));
+};
+
+// GET RANDOM DINNERS
+app.get("/api/random/dinner", async (_, res) => {
+  const url = `${apiUrl}&number=3&tags=dinner`
+  const response = await axios.get(url)
+  res.json(response.data);
+})
+
+// GET RANDOM BREAKFASTS 
+app.get("/api/random/breakfast", async (_, res) => {
+  const url = `${apiUrl}&number=3&tags=breakfast`
   const response = await axios.get(url)
   res.json(response.data);
 })
