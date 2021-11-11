@@ -1,6 +1,7 @@
 import React from 'react';
 import RecipeCard from './RecipeCard';
 import { Link } from 'react-router-dom';
+import '../styles/Recipes.css';
 
 const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe, setClickedRecipe}) => {
   console.log(recipes)
@@ -24,8 +25,7 @@ const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe, setCli
   
   if (recipes) {
     return <div className="Recipes__container">
-        <h1 className="Recipes__header">Recipes for</h1>
-        <h2 className="Recipes__header--search-term">{title}</h2>
+        <h1 className="Recipes__header">Recipes for<span className="Recipes__header--search-term">{title}</span></h1>
         {recipes.map(recipe => <RecipeCard recipe={recipe} key={recipe.id} setClickedRecipe={setClickedRecipe}  addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>)}
         <Link to="/" className="Recipes__btn-goBack">Try another keyword</Link>
   </div>

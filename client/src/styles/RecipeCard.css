@@ -1,3 +1,53 @@
+.RecipeCard__container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 300px;
+  position: relative;
+}
+
+.RecipeCard__image {
+  max-width: 300px;
+  height: 175px;
+  object-fit: cover;
+}
+
+.RecipeCard__text {
+  padding: 1em;
+}
+
+.RecipeCard__text--title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+
+.RecipeCard__text--details {
+  margin: 0.25em 0;
+}
+
+.RecipeCard__diets {
+  margin-top: 0.5em;
+}
+
+.text--bold {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.RecipeCard__heart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 3rem;
+  background: rgba(255, 255, 255, 0.438);
+  border-radius: 50%;
+  padding: 0.2em;
+}
+
 .liked {
-  background: pink;
+  background: #fec5bba8;
+  color: red;
 }

@@ -30,15 +30,16 @@ const RecipeCard = ({recipe, setClickedRecipe, addLikedRecipe, removeLikedRecipe
     }
   };
 
+  const diets = recipe.diets.join(', ')
+
   return (
     <div onClick={handleClick} className="RecipeCard__container">
         <img src={recipe.image} alt="img" className="RecipeCard__image"/>
         <div className="RecipeCard__text">
-          <h3 className="RecipeCard__text--details RecipeCard__text--title">{recipe.title}</h3>
-          <p className="RecipeCard__text--details RecipeCard__text--time">Time to make: {recipe.readyInMinutes} minutes</p>
-          <p className="RecipeCard__text--details RecipeCard__servings">Servings: {recipe.servings}</p>
-          <div className="RecipeCard__text--details RecipeCard__diets"> Suitable for
-            {recipe.diets.map(item => <p key={item} className="RecipeCard__diets--diet">{item}</p>)}
+          <h3 className="RecipeCard__text--title">{recipe.title}</h3>
+          <p className="RecipeCard__text--details RecipeCard__text--time"><span className="text--bold">Time to make: </span>{recipe.readyInMinutes} minutes</p>
+          <p className="RecipeCard__text--details RecipeCard__servings"><span className="text--bold">Servings: </span>{recipe.servings}</p>
+          <div className="RecipeCard__text--details RecipeCard__diets"> {diets}
           </div>
         </div>
         <p onClick={toggleLike} className={`RecipeCard__heart ${isLiked ? "liked" : null}`}><IoHeartOutline /></p>
