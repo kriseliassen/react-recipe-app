@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
   const [query, setQuery] = useState([])
   const [value, setValue] = useState('')
+  console.log(query)
 
   const handleBtnClick = (meal) => {
     setSearchTags(meal)
@@ -20,13 +21,14 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
       setQuery(updatedArray)
       return
     }
-    setQuery([...query, string])
+    setQuery([string])
   }
 
   const handleSubmit = async e => {
+    const searchTerm = [...query, value]
     e.preventDefault();
-    setSearchTags(query.join(' '))
-    getRecipes(query)
+    setSearchTags(searchTerm.join(' '))
+    getRecipes(searchTerm)
     setValue('');
     e.target.query.blur();
   };
@@ -34,7 +36,7 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
   return (
     <div>
       <h2>What do you want for dinner?</h2>
-      <p>Search using your own keywords or click some of our suggestions</p>
+      <p>Search using your own keyword or click one of our suggestions</p>
       <p onClick={toggleQuery}>healthy</p>
       <p onClick={toggleQuery}>salad</p>
       <p onClick={toggleQuery}>pasta</p>

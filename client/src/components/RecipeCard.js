@@ -24,12 +24,14 @@ const RecipeCard = ({recipe, setClickedRecipe, addLikedRecipe, removeLikedRecipe
 
   return (
     <div onClick={handleClick}>
-        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`} alt="img"/>
+        <img src={recipe.image} alt="img"/>
         <div className="RecipeCard__text">
           <h3>{recipe.title}</h3>
           <p>Time to make: {recipe.readyInMinutes} minutes</p>
           <p>Servings: {recipe.servings}</p>
-          <div>See recipe: {recipe.sourceUrl}</div>
+          <div> Suitable for
+            {recipe.diets.map(item => <p key={item}>{item}</p>)}
+          </div>
         </div>
         <p onClick={toggleLike} className={liked ? "liked" : null}><IoHeartOutline /></p>
     </div>

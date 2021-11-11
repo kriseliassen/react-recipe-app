@@ -13,7 +13,7 @@ function App() {
   const [recipes, setRecipes] = useState(null);
   const [searchTags, setSearchTags] = useState(null)
   const [likedRecipes, setLikedRecipes] = useState([])
-  // console.log('recipes', recipes)
+  console.log('recipes', recipes)
   // console.log('clicked', clickedRecipe)
   // console.log('tags', searchTags)
   // console.log('liked', likedRecipes)
@@ -29,15 +29,15 @@ function App() {
     localStorage.setItem('likedRecipes', JSON.stringify(likedRecipes));
   }, [likedRecipes]);
 
-  const fetchData = async (tags = 'salad') => {
+  const fetchData = async (tags) => {
     const path = `/api/random/${tags}`
     await fetch(path)
       .then(res => res.json())
-      .then(data => {
-        const recipesData = JSON.parse(data);
-        setRecipes(recipesData.recipes)
-      })
-      // .then(data => setRecipes(data));
+      // .then(data => {
+      //   const recipesData = JSON.parse(data);
+      //   setRecipes(recipesData.recipes)
+      // })
+      .then(data => setRecipes(data));
     return
   }
 
