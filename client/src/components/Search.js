@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import '../styles/Search.css'
 
 const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
   const [query, setQuery] = useState([])
   const [value, setValue] = useState('')
+  const [activeItemId, setActiveItemId] = useState(null);
 
   const handleBtnClick = (meal) => {
     setSearchTags(meal)
@@ -13,48 +15,46 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
     setValue(e.target.value);
   };
 
-  const toggleQuery = (e) => {
-    const string = e.target.textContent
-    if (query.includes(string)) {
-      const updatedArray = query.filter(item => item !== string)
-      setQuery(updatedArray)
-      return
-    }
-    setQuery([string])
-  }
-
   const handleSubmit = async e => {
-    const searchTerm = [...query, value]
+    const searchTerm = [value]
     e.preventDefault();
-    setSearchTags(searchTerm.join(' '))
+    setSearchTags(searchTerm + '')
     getRecipes([...searchTerm, 'dinner'])
     setValue('');
     e.target.query.blur();
   };
 
+  const toggleActive = (id) => {
+    if(activeItemId === id) {
+      setActiveItemId(null);
+      setValue('')
+      return;
+    }
+    setActiveItemId(id);
+    setValue(id)
+    setQuery([id])
+  };
+
+  const searchSuggestions = ['salad', 'pasta', 'soup', 'potato', 'quick', 'vegetarian', 'vegan', 'salmon']
+
   return (
     <div className="Search__container">
       <h2 className="Search__header">What are you in the mood for?</h2>
       <p className="Search__subheader">Search using your own keyword or click one of our suggestions</p>
-      <p onClick={toggleQuery} className="Search__suggestion">salad</p>
-      <p onClick={toggleQuery} className="Search__suggestion">pasta</p>
-      <p onClick={toggleQuery} className="Search__suggestion">soup</p>
-      <p onClick={toggleQuery} className="Search__suggestion">potato</p> 
-      <p onClick={toggleQuery} className="Search__suggestion">quick</p>
-      <p onClick={toggleQuery} className="Search__suggestion">vegetarian</p>
-      <p onClick={toggleQuery} className="Search__suggestion">vegan</p>
-      <p onClick={toggleQuery} className="Search__suggestion">salmon</p>
+      <div className="Search__suggestion--list">
+        {searchSuggestions.map(item => <p className={`Search__suggestion ${activeItemId === item ? "active" : null}`} key={item} onClick={() => toggleActive(item)}>{item}</p>)}
+      </div>
       <form onSubmit={handleSubmit} className="Search__form">
         <label htmlFor="Form__input" className="Form__label">
-        <input
-            type="text"
-            id="Form__input"
-            className="Form__input"
-            autoComplete="off"
-            name="query"
-            value={value || query}
-            required
-            onChange={handleChange} />
+          <input
+              type="text"
+              id="Form__input"
+              className="Form__input"
+              autoComplete="off"
+              name="query"
+              value={value}
+              required
+              onChange={handleChange}/>
         </label>
         <input type="submit" className="btn Form__btn" value="Get suggestions!" />
       </form>

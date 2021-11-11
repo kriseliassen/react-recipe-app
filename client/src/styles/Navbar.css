@@ -1,0 +1,11 @@
+.Navbar__menu {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.Navbar__menu a {
+  text-decoration: none;
+  color: #f8f9fa;
+  font-size: 1.1rem;
+}

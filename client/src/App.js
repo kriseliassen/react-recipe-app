@@ -15,10 +15,6 @@ function App() {
   const [searchTags, setSearchTags] = useState(null)
   const [clickedRecipe, setClickedRecipe] = useState(null);
   const [likedRecipes, setLikedRecipes] = useState([])
-  // console.log('recipes', recipes)
-  // console.log('clicked', clickedRecipe)
-  // console.log('tags', searchTags)
-  // console.log('liked', likedRecipes)
   
   const navigate = useNavigate();
 
@@ -71,17 +67,17 @@ function App() {
 
   return (
     <div className="App__container">
-      <div className="App__mobile-top-header visible">
-        <p>What's for dinner</p>
-      </div>
-      <Routes>
-        <Route path="/" element={<Search getRandomRecipe={getRandomRecipe} getRecipes={getRecipes} searchTags={searchTags} setSearchTags={setSearchTags}/>}/>
-        <Route path="/recipes" element={<Recipes recipes={recipes} setClickedRecipe={setClickedRecipe} searchTags={searchTags} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
-        <Route path="/recipes/:title" element={<Recipe recipe={clickedRecipe} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
-        <Route path="/favourites" element={<LikedRecipes likedRecipes={likedRecipes} addLikedRecipe={addLikedRecipe} setClickedRecipe={setClickedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
-        <Route path="/about" element={<About />}/>
-      </Routes>
-      <Navbar recipes={recipes}/>
+        <div className="App__navbar--container">
+          <p className="App__navbar--logo">What's for dinner?</p>
+          <Navbar recipes={recipes}/>
+        </div>
+        <Routes>
+          <Route path="/" element={<Search getRandomRecipe={getRandomRecipe} getRecipes={getRecipes} searchTags={searchTags} setSearchTags={setSearchTags}/>}/>
+          <Route path="/recipes" element={<Recipes recipes={recipes} setClickedRecipe={setClickedRecipe} searchTags={searchTags} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+          <Route path="/recipes/:title" element={<Recipe recipe={clickedRecipe} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+          <Route path="/favourites" element={<LikedRecipes likedRecipes={likedRecipes} addLikedRecipe={addLikedRecipe} setClickedRecipe={setClickedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+          <Route path="/about" element={<About />}/>
+        </Routes>
     </div>
   );
 }

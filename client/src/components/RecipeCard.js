@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { IoHeartOutline } from 'react-icons/io5'
-import './RecipeCard.css'
+import '../styles/RecipeCard.css'
 
 const RecipeCard = ({recipe, setClickedRecipe, addLikedRecipe, removeLikedRecipe}) => {
   const [isLiked, setIsLiked] = useState(false)
