@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import LikedRecipes from './components/LikedRecipes';
@@ -14,8 +13,12 @@ import './App.css';
 function App() {
   const [recipes, setRecipes] = useState(null);
   const [clickedRecipe, setClickedRecipe] = useState(null);
-  console.log('recipes', recipes)
-  console.log('clicked', clickedRecipe)
+  const [searchTags, setSearchTags] = useState([])
+  const [likedRecipes, setLikedRecipes] = useState([])
+  // console.log('recipes', recipes)
+  // console.log('clicked', clickedRecipe)
+  // console.log('tags', searchTags)
+  console.log('liked', likedRecipes)
   
   const navigate = useNavigate();
 
@@ -23,7 +26,7 @@ function App() {
     if (clickedRecipe === null) {
       return
     }
-    navigate(`/recipes/${clickedRecipe.id}`);
+    navigate(`/recipes/${clickedRecipe.title}`);
   }, [clickedRecipe])
 
   const fetchData = async (meal, tags) => {
@@ -38,20 +41,28 @@ function App() {
   }
 
   const getRandomRecipe = async (meal) => {
-    console.log('clicked', meal);
     await fetchData(meal);
     navigate('/recipes')
+  }
+
+  const addLikedRecipe = (recipe) => {
+    setLikedRecipes([...likedRecipes, recipe]);
+  }
+
+  const removeLikedRecipe = (recipe) => {
+    const updatedList = likedRecipes.filter(item => item.id !== recipe.id)
+    setLikedRecipes(updatedList);
   }
 
   return (
     <div className="App">
       <Navbar recipes={recipes}/>
       <Routes>
-        <Route path="/" element={<Search getRandomRecipe={getRandomRecipe}/>}/>
-        <Route path="/recipes" element={<Recipes recipes={recipes} setClickedRecipe={setClickedRecipe} />}/>
-        <Route path="/liked" element={<LikedRecipes />}/>
+        <Route path="/" element={<Search getRandomRecipe={getRandomRecipe} searchTags={searchTags} setSearchTags={setSearchTags}/>}/>
+        <Route path="/recipes" element={<Recipes recipes={recipes} setClickedRecipe={setClickedRecipe} searchTags={searchTags} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+        <Route path="/recipes/:title" element={<Recipe recipe={clickedRecipe} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+        <Route path="/liked" element={<LikedRecipes likedRecipes={likedRecipes}/>}/>
         <Route path="/about" element={<About />}/>
-        <Route path="/recipes/:id" element={<Recipe recipe={clickedRecipe}/>}/>
       </Routes>
     </div>
   );

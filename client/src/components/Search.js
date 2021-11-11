@@ -1,16 +1,18 @@
 import React from 'react'
 
-const Search = ({getRandomRecipe}) => {
+const Search = ({getRandomRecipe, searchTags, setSearchTags}) => {
 
-  const handleClick = (meal) => {
+  const handleBtnClick = (meal) => {
+    setSearchTags([meal])
     getRandomRecipe(meal);
   }
 
   return (
     <div>
-      I am the form and the Search page
-      <button onClick={() => handleClick('dinner')}>Click for random dinner</button>
-      <button onClick={() => handleClick('breakfast')}>Click for random breakfast</button>
+      <h2>What do you want for dinner?</h2>
+      <p>Search using your own keywords or click some of our suggestions</p>
+      <button onClick={() => handleBtnClick('dinner')}>Click for random dinner</button>
+      <button onClick={() => handleBtnClick('breakfast')}>Click for random breakfast</button>
     </div>
   )
 }

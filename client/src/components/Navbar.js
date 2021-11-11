@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const Navbar = ({recipes}) => {
-  console.log('recipes in nav', recipes)
   return (
     <div>
       <Link to="/">Search</Link>
