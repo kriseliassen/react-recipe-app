@@ -4,7 +4,9 @@ import './RecipeCard.css'
 
 const RecipeCard = ({recipe, setClickedRecipe, addLikedRecipe, removeLikedRecipe}) => {
   const [isLiked, setIsLiked] = useState(false)
+
   const handleClick = () => {
+    console.log('click click')
     setClickedRecipe(recipe)
   };
 
@@ -15,7 +17,6 @@ const RecipeCard = ({recipe, setClickedRecipe, addLikedRecipe, removeLikedRecipe
       setIsLiked(true); 
     } else {
       removeLikedRecipe(recipe)
-      setIsLiked(false); 
     }
   };
 

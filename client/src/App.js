@@ -6,19 +6,28 @@ import Navbar from './components/Navbar'
 import LikedRecipes from './components/LikedRecipes';
 import About from './components/About';
 import Search from './components/Search'
+import Recipe from './components/Recipe'
 import Recipes from './components/Recipes';
 import './App.css';
 
 function App() {
   const [recipes, setRecipes] = useState(null);
   const [searchTags, setSearchTags] = useState(null)
+  const [clickedRecipe, setClickedRecipe] = useState(null);
   const [likedRecipes, setLikedRecipes] = useState([])
-  console.log('recipes', recipes)
+  // console.log('recipes', recipes)
   // console.log('clicked', clickedRecipe)
   // console.log('tags', searchTags)
   // console.log('liked', likedRecipes)
   
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (clickedRecipe === null) {
+      return
+    }
+    navigate(`/recipes/${clickedRecipe.title}`);
+  }, [clickedRecipe])
 
   useEffect(() => {
     const localStorageData = localStorage.getItem('likedRecipes');
@@ -33,10 +42,6 @@ function App() {
     const path = `/api/random/${tags}`
     await fetch(path)
       .then(res => res.json())
-      // .then(data => {
-      //   const recipesData = JSON.parse(data);
-      //   setRecipes(recipesData.recipes)
-      // })
       .then(data => setRecipes(data));
     return
   }
@@ -58,6 +63,9 @@ function App() {
   const removeLikedRecipe = (recipe) => {
     const updatedList = likedRecipes.filter(item => item.id !== recipe.id)
     setLikedRecipes(updatedList);
+    const recipeInState = recipes.find(item => item.id === recipe.id)
+    const updatedRecipe = {...recipeInState, isLiked: false}
+    setRecipes([...recipes, updatedRecipe])
   }
 
   return (
@@ -65,8 +73,9 @@ function App() {
       <Navbar recipes={recipes}/>
       <Routes>
         <Route path="/" element={<Search getRandomRecipe={getRandomRecipe} getRecipes={getRecipes} searchTags={searchTags} setSearchTags={setSearchTags}/>}/>
-        <Route path="/recipes" element={<Recipes recipes={recipes} searchTags={searchTags} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
-        <Route path="/liked" element={<LikedRecipes likedRecipes={likedRecipes} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+        <Route path="/recipes" element={<Recipes recipes={recipes} setClickedRecipe={setClickedRecipe} searchTags={searchTags} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+        <Route path="/recipes/:title" element={<Recipe recipe={clickedRecipe} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+        <Route path="/liked" element={<LikedRecipes likedRecipes={likedRecipes} addLikedRecipe={addLikedRecipe} setClickedRecipe={setClickedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
         <Route path="/about" element={<About />}/>
       </Routes>
     </div>

@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
   const [query, setQuery] = useState([])
   const [value, setValue] = useState('')
-  console.log(query)
 
   const handleBtnClick = (meal) => {
     setSearchTags(meal)
@@ -28,7 +27,7 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
     const searchTerm = [...query, value]
     e.preventDefault();
     setSearchTags(searchTerm.join(' '))
-    getRecipes(searchTerm)
+    getRecipes([...searchTerm, 'dinner'])
     setValue('');
     e.target.query.blur();
   };
@@ -37,7 +36,6 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
     <div>
       <h2>What do you want for dinner?</h2>
       <p>Search using your own keyword or click one of our suggestions</p>
-      <p onClick={toggleQuery}>healthy</p>
       <p onClick={toggleQuery}>salad</p>
       <p onClick={toggleQuery}>pasta</p>
       <p onClick={toggleQuery}>soup</p>
@@ -45,6 +43,7 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
       <p onClick={toggleQuery}>quick</p>
       <p onClick={toggleQuery}>vegetarian</p>
       <p onClick={toggleQuery}>vegan</p>
+      <p onClick={toggleQuery}>salmon</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="Form__input" className="Form__label">
         <input

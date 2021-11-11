@@ -1,7 +1,7 @@
 import React from 'react';
 import RecipeCard from './RecipeCard';
 
-const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe}) => {
+const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe, setClickedRecipe}) => {
   let title = searchTags;
   if (title === 'dinner') {
     title = 'any dinners'
@@ -15,7 +15,7 @@ const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe}) => {
       <h1>Recipes for</h1>
       <h2>{title}</h2>
       {recipes && recipes.map(recipe => 
-        <RecipeCard recipe={recipe} key={recipe.id} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>)}
+        <RecipeCard recipe={recipe} key={recipe.id} setClickedRecipe={setClickedRecipe}  addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>)}
     </div>
   )
 }
