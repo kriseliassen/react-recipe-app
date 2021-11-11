@@ -1,9 +1,9 @@
 import React from 'react';
 import RecipeCard from './RecipeCard';
 
-const Recipes = ({recipes, setClickedRecipe, searchTags, addLikedRecipe, removeLikedRecipe}) => {
+const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe}) => {
   let title;
-  let tags = [...searchTags]
+  let tags = searchTags.split(' ')
   if (tags.length !== 0) {
     const dinnerIndex = tags.findIndex(tag => tag === 'dinner');
     const breakfastIndex = tags.findIndex(tag => tag === 'breakfast');
@@ -21,12 +21,13 @@ const Recipes = ({recipes, setClickedRecipe, searchTags, addLikedRecipe, removeL
       title = 'any dinners'
     }
   }
+
   return (
     <div >
       <h1>Recipes for</h1>
       <h2>{title}</h2>
       {recipes && recipes.map(recipe => 
-        <RecipeCard recipe={recipe} key={recipe.id} setClickedRecipe={setClickedRecipe} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>)}
+        <RecipeCard recipe={recipe} key={recipe.id} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>)}
     </div>
   )
 }

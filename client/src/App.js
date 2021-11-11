@@ -7,41 +7,47 @@ import LikedRecipes from './components/LikedRecipes';
 import About from './components/About';
 import Search from './components/Search'
 import Recipes from './components/Recipes';
-import Recipe from './components/Recipe'
 import './App.css';
 
 function App() {
   const [recipes, setRecipes] = useState(null);
-  const [clickedRecipe, setClickedRecipe] = useState(null);
-  const [searchTags, setSearchTags] = useState([])
+  const [searchTags, setSearchTags] = useState(null)
   const [likedRecipes, setLikedRecipes] = useState([])
-  // console.log('recipes', recipes)
+  console.log('recipes', recipes)
   // console.log('clicked', clickedRecipe)
   // console.log('tags', searchTags)
-  console.log('liked', likedRecipes)
+  // console.log('liked', likedRecipes)
   
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (clickedRecipe === null) {
-      return
-    }
-    navigate(`/recipes/${clickedRecipe.title}`);
-  }, [clickedRecipe])
+    const localStorageData = localStorage.getItem('likedRecipes');
+    setLikedRecipes(localStorageData ? JSON.parse(localStorageData) : []);
+  }, []);
+  
+  useEffect(() => {
+    localStorage.setItem('likedRecipes', JSON.stringify(likedRecipes));
+  }, [likedRecipes]);
 
-  const fetchData = async (meal, tags) => {
-    await fetch(`/api/random/${meal}`)
+  const fetchData = async (tags) => {
+    const path = `/api/random/${tags}`
+    await fetch(path)
       .then(res => res.json())
-      .then(data => {
-        const recipesData = JSON.parse(data);
-        setRecipes(recipesData.recipes)
-      })
-      // .then(data => setRecipes(data.recipes));
+      // .then(data => {
+      //   const recipesData = JSON.parse(data);
+      //   setRecipes(recipesData.recipes)
+      // })
+      .then(data => setRecipes(data));
     return
   }
 
-  const getRandomRecipe = async (meal) => {
-    await fetchData(meal);
+  const getRecipes = async (tags) => {
+    await fetchData(tags);
+    navigate('/recipes')
+  };
+
+  const getRandomRecipe = async (tags) => {
+    await fetchData(tags);
     navigate('/recipes')
   }
 
@@ -58,10 +64,9 @@ function App() {
     <div className="App">
       <Navbar recipes={recipes}/>
       <Routes>
-        <Route path="/" element={<Search getRandomRecipe={getRandomRecipe} searchTags={searchTags} setSearchTags={setSearchTags}/>}/>
-        <Route path="/recipes" element={<Recipes recipes={recipes} setClickedRecipe={setClickedRecipe} searchTags={searchTags} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
-        <Route path="/recipes/:title" element={<Recipe recipe={clickedRecipe} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
-        <Route path="/liked" element={<LikedRecipes likedRecipes={likedRecipes}/>}/>
+        <Route path="/" element={<Search getRandomRecipe={getRandomRecipe} getRecipes={getRecipes} searchTags={searchTags} setSearchTags={setSearchTags}/>}/>
+        <Route path="/recipes" element={<Recipes recipes={recipes} searchTags={searchTags} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+        <Route path="/liked" element={<LikedRecipes likedRecipes={likedRecipes} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
         <Route path="/about" element={<About />}/>
       </Routes>
     </div>
