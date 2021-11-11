@@ -65,19 +65,23 @@ function App() {
     setLikedRecipes(updatedList);
     const recipeInState = recipes.find(item => item.id === recipe.id)
     const updatedRecipe = {...recipeInState, isLiked: false}
-    setRecipes([...recipes, updatedRecipe])
+    const updatedState = recipes.map(item => item.id === updatedRecipe.id ? updatedRecipe : item)
+    setRecipes(updatedState)
   }
 
   return (
-    <div className="App">
-      <Navbar recipes={recipes}/>
+    <div className="App__container">
+      <div className="App__mobile-top-header visible">
+        <p>What's for dinner</p>
+      </div>
       <Routes>
         <Route path="/" element={<Search getRandomRecipe={getRandomRecipe} getRecipes={getRecipes} searchTags={searchTags} setSearchTags={setSearchTags}/>}/>
         <Route path="/recipes" element={<Recipes recipes={recipes} setClickedRecipe={setClickedRecipe} searchTags={searchTags} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
         <Route path="/recipes/:title" element={<Recipe recipe={clickedRecipe} addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
-        <Route path="/liked" element={<LikedRecipes likedRecipes={likedRecipes} addLikedRecipe={addLikedRecipe} setClickedRecipe={setClickedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
+        <Route path="/favourites" element={<LikedRecipes likedRecipes={likedRecipes} addLikedRecipe={addLikedRecipe} setClickedRecipe={setClickedRecipe} removeLikedRecipe={removeLikedRecipe}/>}/>
         <Route path="/about" element={<About />}/>
       </Routes>
+      <Navbar recipes={recipes}/>
     </div>
   );
 }

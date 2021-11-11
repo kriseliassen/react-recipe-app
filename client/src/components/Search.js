@@ -33,18 +33,18 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
   };
 
   return (
-    <div>
-      <h2>What do you want for dinner?</h2>
-      <p>Search using your own keyword or click one of our suggestions</p>
-      <p onClick={toggleQuery}>salad</p>
-      <p onClick={toggleQuery}>pasta</p>
-      <p onClick={toggleQuery}>soup</p>
-      <p onClick={toggleQuery}>potato</p>
-      <p onClick={toggleQuery}>quick</p>
-      <p onClick={toggleQuery}>vegetarian</p>
-      <p onClick={toggleQuery}>vegan</p>
-      <p onClick={toggleQuery}>salmon</p>
-      <form onSubmit={handleSubmit}>
+    <div className="Search__container">
+      <h2 className="Search__header">What are you in the mood for?</h2>
+      <p className="Search__subheader">Search using your own keyword or click one of our suggestions</p>
+      <p onClick={toggleQuery} className="Search__suggestion">salad</p>
+      <p onClick={toggleQuery} className="Search__suggestion">pasta</p>
+      <p onClick={toggleQuery} className="Search__suggestion">soup</p>
+      <p onClick={toggleQuery} className="Search__suggestion">potato</p>
+      <p onClick={toggleQuery} className="Search__suggestion">quick</p>
+      <p onClick={toggleQuery} className="Search__suggestion">vegetarian</p>
+      <p onClick={toggleQuery} className="Search__suggestion">vegan</p>
+      <p onClick={toggleQuery} className="Search__suggestion">salmon</p>
+      <form onSubmit={handleSubmit} className="Search__form">
         <label htmlFor="Form__input" className="Form__label">
         <input
             type="text"
@@ -56,10 +56,12 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
             required
             onChange={handleChange} />
         </label>
-        <input type="submit" className="Form__btn" value="Get suggestions!" />
+        <input type="submit" className="btn Form__btn" value="Get suggestions!" />
       </form>
-      <button onClick={() => handleBtnClick('dinner')}>Click for random dinner</button>
-      <button onClick={() => handleBtnClick('breakfast')}>Click for random breakfast</button>
+      <div className="Search__random-btns-container">
+        <button onClick={() => handleBtnClick('dinner')} className="btn Search__btn Search__btn--dinner">I'm not picky, suggest any dinner</button>
+        <button onClick={() => handleBtnClick('breakfast')} className="btn Search__btn Search__btn--dinner">I want breakfast for dinner</button>
+      </div>
     </div>
   )
 }

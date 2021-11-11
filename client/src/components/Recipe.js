@@ -1,32 +1,23 @@
 import React from 'react'
 import parser from 'html-react-parser';
-// import { IoHeartOutline } from 'react-icons/io5'
 
-const Recipe = ({recipe, removeLikedRecipe}) => {
+const Recipe = ({recipe}) => {
   const instructions = recipe ? parser(recipe.instructions) : '';
 
-  // const removeLike = (e) => {
-  //   console.log('hello')
-  //   e.stopPropagation()
-  //   removeLikedRecipe(recipe)
-  // };
-  // onClick={removeLike} 
-
-  // const isLiked = recipe.isLiked
-
   return (
-      <div>
-        <div>Favourite</div>
-        <h1>{recipe.title}</h1>
-        {/* <p className={isLiked ? 'liked': null}><IoHeartOutline /></p> */}
-        <img src={recipe.image} alt="img"/>
-        <div>
-          <p>Time to make: {recipe.readyInMinutes} minutes</p>
-          <p>Servings: {recipe.servings}</p>
-          <div>Suitable for: {recipe.diets.map(diet => <p key={diet}>{diet}</p>)}</div>
+      <div className="Recipe__container">
+        <div className="Recipe__flag--favourite">Favourite</div>
+        <h1 className="Recipe__header">{recipe.title}</h1>
+        <img src={recipe.image} alt="img" className="Recipe__image"/>
+        <div className="Recipe__details">
+          <p className="Recipe__details--text RecipeCard__details-time">Time to make: {recipe.readyInMinutes} minutes</p>
+          <p className="Recipe__details--text Recipe__details--text-servings">Servings: {recipe.servings}</p>
+          <div className="Recipe__details--text Recipe__details--text-diets">Suitable for: {recipe.diets.map(diet => <p key={diet} className="Recipe__details--text Recipe__details--diet">{diet}</p>)}</div>
         </div>
-        <div>{recipe.extendedIngredients.map(item => <p key={item.id}>{item.originalString}</p>)}</div>
-        <div>{instructions}</div>
+        <div className="Recipe__text--container">
+          <div className="Recipe__text Recipe__ingredients">{recipe.extendedIngredients.map(item => <p key={item.id}className="Recipe__text Recipe__ingredient-item">{item.originalString}</p>)}</div>
+          <div className="Recipe__text Recipe__instructions">{instructions}</div>
+        </div>
       </div>
   )
 }

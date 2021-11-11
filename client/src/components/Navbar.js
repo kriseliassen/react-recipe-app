@@ -6,7 +6,7 @@ const Navbar = ({recipes}) => {
     <div>
       <Link to="/">Search</Link>
       {recipes && <Link to="/recipes">Recipes</Link>}
-      <Link to="/liked">My recipes</Link>
+      <Link to="/favourites">Favourites</Link>
       <Link to="/about">About</Link>
     </div>
   )

@@ -2,8 +2,8 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div>
-      I am the about page
+    <div className="About__container">
+      <h1 className="About__header">About this app</h1>
     </div>
   )
 }

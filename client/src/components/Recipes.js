@@ -11,9 +11,9 @@ const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe, setCli
   }
 
   return (
-    <div >
-      <h1>Recipes for</h1>
-      <h2>{title}</h2>
+    <div className="Recipes__container">
+      <h1 className="Recipes__header">Recipes for</h1>
+      <h2 className="Recipes__header--search-term">{title}</h2>
       {recipes && recipes.map(recipe => 
         <RecipeCard recipe={recipe} key={recipe.id} setClickedRecipe={setClickedRecipe}  addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>)}
     </div>
