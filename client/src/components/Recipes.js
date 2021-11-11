@@ -1,7 +1,9 @@
 import React from 'react';
 import RecipeCard from './RecipeCard';
+import { Link } from 'react-router-dom';
 
 const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe, setClickedRecipe}) => {
+  console.log(recipes)
   let title = searchTags;
   if (title === 'dinner') {
     title = 'any dinners'
@@ -10,14 +12,25 @@ const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe, setCli
     title = 'breakfast for dinner'
   }
 
-  return (
-    <div className="Recipes__container">
-      <h1 className="Recipes__header">Recipes for</h1>
-      <h2 className="Recipes__header--search-term">{title}</h2>
-      {recipes && recipes.map(recipe => 
-        <RecipeCard recipe={recipe} key={recipe.id} setClickedRecipe={setClickedRecipe}  addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>)}
+  if (recipes.length === 0){
+    return <div className="Recipes__container">
+      <h1 className="Recipes__header">Recipes</h1>
+      <div className="Recipes__empty">
+        <p className="Recipes__empty-text">Oh no, we have no suggested recipes for this keyword right now. Try something else!</p>
+        <Link to="/" className="Recipes__empty-text">Go back to search</Link>
+      </div>
     </div>
-  )
+  }
+  
+  if (recipes) {
+    return <div className="Recipes__container">
+        <h1 className="Recipes__header">Recipes for</h1>
+        <h2 className="Recipes__header--search-term">{title}</h2>
+        {recipes.map(recipe => <RecipeCard recipe={recipe} key={recipe.id} setClickedRecipe={setClickedRecipe}  addLikedRecipe={addLikedRecipe} removeLikedRecipe={removeLikedRecipe}/>)}
+        <Link to="/" className="Recipes__btn-goBack">Try another keyword</Link>
+  </div>
+  }
+  
 }
 
 export default Recipes

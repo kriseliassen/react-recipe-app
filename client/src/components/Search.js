@@ -39,7 +39,7 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
       <p onClick={toggleQuery} className="Search__suggestion">salad</p>
       <p onClick={toggleQuery} className="Search__suggestion">pasta</p>
       <p onClick={toggleQuery} className="Search__suggestion">soup</p>
-      <p onClick={toggleQuery} className="Search__suggestion">potato</p>
+      <p onClick={toggleQuery} className="Search__suggestion">potato</p> 
       <p onClick={toggleQuery} className="Search__suggestion">quick</p>
       <p onClick={toggleQuery} className="Search__suggestion">vegetarian</p>
       <p onClick={toggleQuery} className="Search__suggestion">vegan</p>
