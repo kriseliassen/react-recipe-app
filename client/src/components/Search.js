@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../styles/Search.css'
 
 const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
-  const [query, setQuery] = useState([])
+  // const [query, setQuery] = useState([])
   const [value, setValue] = useState('')
   const [activeItemId, setActiveItemId] = useState(null);
 
@@ -32,7 +32,7 @@ const Search = ({getRandomRecipe, getRecipes, setSearchTags}) => {
     }
     setActiveItemId(id);
     setValue(id)
-    setQuery([id])
+    // setQuery([id])
   };
 
   const searchSuggestions = ['salad', 'pasta', 'soup', 'potato', 'quick', 'vegetarian', 'vegan', 'salmon']

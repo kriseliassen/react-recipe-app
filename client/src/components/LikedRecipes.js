@@ -1,5 +1,6 @@
 import React from 'react'
 import RecipeCard from './RecipeCard'
+import '../styles/LikedRecipes.css'
 
 const LikedRecipes = ({ likedRecipes, setClickedRecipe, addLikedRecipe, removeLikedRecipe }) => {
   return (

@@ -1,13 +1,15 @@
 import React from 'react'
 import parser from 'html-react-parser';
+import { IoHeartOutline } from 'react-icons/io5'
 import '../styles/Recipe.css'
 
 const Recipe = ({recipe}) => {
   const instructions = recipe ? parser(recipe.instructions) : '';
   const diets = recipe.diets.join(', ')
+
+  const isLiked = recipe.isLiked;
   return (
       <div className="Recipe__container">
-        <div className="Recipe__flag--favourite">Favourite</div>
         <h1 className="Recipe__header">{recipe.title}</h1>
         <img src={recipe.image} alt="img" className="Recipe__image"/>
         <div className="Recipe__details">

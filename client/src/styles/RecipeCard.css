@@ -4,6 +4,7 @@
   border: 1px solid black;
   width: 300px;
   position: relative;
+  background: #555f7741;
 }
 
 .RecipeCard__image {
@@ -42,12 +43,12 @@
   top: 0;
   right: 0;
   font-size: 3rem;
-  background: rgba(255, 255, 255, 0.438);
-  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.68);
+  border-radius: 0 0 0 50%;
   padding: 0.2em;
 }
 
 .liked {
-  background: #fec5bba8;
+  background: #fec5bbc4;
   color: red;
 }
