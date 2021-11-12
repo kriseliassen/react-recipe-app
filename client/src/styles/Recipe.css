@@ -1,0 +1,54 @@
+.Recipe__container {
+  margin: 0 0 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25em;
+  position: relative;
+  padding: 1em;
+}
+
+.Recipe__header {
+  font-size: 1.5rem;
+}
+
+.Recipe__image {
+  width: 350px;
+  height: 225px;
+  object-fit: cover;
+}
+
+.Recipe__details {
+  background: #555f776c;
+  width: 350px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.Recipe__flag--favourite {
+  display: none;
+}
+
+.Recipe__ingredients {
+  margin-bottom: 1em;
+}
+
+.Recipe__ingredients--header {
+  margin-bottom: 0.5em;
+}
+
+.Recipe__ingredients--list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.Recipe__instructions--header {
+  margin-bottom: 0.5em;
+}
+
+.Recipe__instructions--text {
+  line-height: 1.5;
+}
