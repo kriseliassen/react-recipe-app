@@ -17,6 +17,7 @@
   width: 350px;
   height: 225px;
   object-fit: cover;
+  object-position: bottom;
 }
 
 .Recipe__details {
@@ -27,8 +28,6 @@
   flex-direction: column;
   gap: 0.5em;
 }
-
-
 
 .Recipe__ingredients {
   margin-bottom: 1em;
@@ -42,6 +41,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+}
+
+.Recipe__instructions {
+  width: 95%;
 }
 
 .Recipe__instructions--header {

@@ -15,7 +15,6 @@ const RecipeCard = ({recipe, setClickedRecipe, addLikedRecipe, removeLikedRecipe
   }, [])
 
   const handleClick = () => {
-    console.log('click click')
     setClickedRecipe(recipe)
   };
 
@@ -34,7 +33,7 @@ const RecipeCard = ({recipe, setClickedRecipe, addLikedRecipe, removeLikedRecipe
 
   return (
     <div onClick={handleClick} className="RecipeCard__container">
-        <img src={recipe.image} alt="img" className="RecipeCard__image"/>
+        <img src={recipe.image || 'https://images.unsplash.com/photo-1518737003272-dac7c4760d5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80'} alt="img" className="RecipeCard__image"/>
         <div className="RecipeCard__text">
           <h3 className="RecipeCard__text--title">{recipe.title}</h3>
           <p className="RecipeCard__text--details RecipeCard__text--time"><span className="text--bold">Time to make: </span>{recipe.readyInMinutes} minutes</p>

@@ -9,3 +9,20 @@
   color: #f8f9fa;
   font-size: 1.1rem;
 }
+
+.current {
+  font-weight: 700;
+  position: relative;
+}
+
+.current::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: white;
+  height: 2px;
+  width: 100%;
+  text-align: center;
+  opacity: 0.4;
+  bottom: -20%;
+}

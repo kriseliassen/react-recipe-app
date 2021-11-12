@@ -1,0 +1,25 @@
+.About__container {
+  margin: 1.5em 0 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25em;
+}
+
+.About__header {
+  font-size: 1.5rem;
+}
+
+.About__text {
+  width: 80%;
+  line-height: 1.5;
+}
+
+.About__link--api {
+  text-decoration: underline;
+  color: #343a40;
+}
+
+.About__link--github {
+  color: #343a40;
+}
