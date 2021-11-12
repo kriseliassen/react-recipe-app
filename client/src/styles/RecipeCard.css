@@ -8,7 +8,7 @@
 }
 
 .RecipeCard__image {
-  max-width: 300px;
+  width: 298px;
   height: 175px;
   object-fit: cover;
   object-position: bottom;
@@ -50,6 +50,20 @@
 }
 
 .liked {
-  background: #fec5bbc4;
+  background: rgba(255, 255, 255, 0.68);
   color: red;
+}
+
+@media screen and (min-width: 768px) {
+  .RecipeCard__container {
+    flex-direction: row;
+    width: 600px;
+    align-items: center;
+  }
+
+  .RecipeCard__heart {
+    top: 60%;
+    bottom: 0;
+    border-radius: 50% 0 0 0;
+  }
 }

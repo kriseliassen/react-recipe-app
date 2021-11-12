@@ -72,3 +72,27 @@
   display: flex;
   gap: 1em;
 }
+
+@media screen and (min-width: 768px) {
+  .Search__container {
+    font-size: 1.1em;
+  }
+  
+  .Search__suggestion--list {
+    max-width: 600px;
+    gap: 2em;
+    margin: 2em 0;
+  }
+
+  .Search__form {
+    margin: 1em 0;
+  }
+
+  .Form__input {
+    font-size: 1.75em;
+  }
+
+  .btn {
+    font-size: 1em;
+  }
+}
