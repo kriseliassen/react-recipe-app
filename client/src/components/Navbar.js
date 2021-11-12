@@ -7,9 +7,7 @@ const Navbar = ({recipes}) => {
   const [currentPage, setCurrentPage] = useState(null)
 
   const pathname = window.location.pathname
-  console.log(pathname)
 
-  // onClick={() => toggleActive(item)
   useEffect(() => {
     if (pathname === '/') {
       setCurrentPage('/')

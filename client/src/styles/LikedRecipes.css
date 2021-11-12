@@ -9,3 +9,9 @@
 .Liked__header {
   font-size: 1.5rem;
 }
+
+.Liked__text--empty {
+  text-align: center;
+  width: 80%;
+  line-height: 1.5;
+}

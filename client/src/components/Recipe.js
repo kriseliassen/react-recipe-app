@@ -1,6 +1,5 @@
 import React from 'react'
 import parser from 'html-react-parser';
-import { IoHeartOutline } from 'react-icons/io5'
 import '../styles/Recipe.css'
 
 const Recipe = ({recipe}) => {

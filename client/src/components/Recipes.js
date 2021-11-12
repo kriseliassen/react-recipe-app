@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import '../styles/Recipes.css';
 
 const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe, setClickedRecipe}) => {
-  console.log(recipes)
   let title = searchTags;
   if (title === 'dinner') {
     title = 'any dinners'
