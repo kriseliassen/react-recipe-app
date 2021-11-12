@@ -17,6 +17,14 @@
   text-align: center;
 }
 
+.Recipes__empty {
+  width: 80%;
+  height: 250px;
+  margin: 2em;
+  text-align: center;
+}
+
+.Recipes__empty-btn,
 .Recipes__btn-goBack {
   font-size: 1rem;
   font-family: var(--ff-sans-serif);
@@ -26,7 +34,14 @@
   background: #2f4858;
   color: #f8f9fa;
   text-decoration: none;
-  margin-top: 0.5em;
+  width: 200px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.Recipes__empty-btn a {
+  color: #f8f9fa;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {

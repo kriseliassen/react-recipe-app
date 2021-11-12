@@ -43,8 +43,8 @@
   gap: 0.5em;
 }
 
-.Recipe__instructions {
-  width: 95%;
+.Recipe__text--container{
+  margin: 0 0.5em;
 }
 
 .Recipe__instructions--header {

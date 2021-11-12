@@ -17,7 +17,7 @@ const Recipes = ({recipes, searchTags, addLikedRecipe, removeLikedRecipe, setCli
       <h1 className="Recipes__header">Recipes</h1>
       <div className="Recipes__empty">
         <p className="Recipes__empty-text">Oh no, we have no suggested recipes for this keyword right now. Try something else!</p>
-        <Link to="/" className="Recipes__empty-text">Go back to search</Link>
+        <p className="Recipes__empty-btn"><Link to="/">Go back to search</Link></p>
       </div>
     </div>
   }
