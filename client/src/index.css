@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;1,300&display=swap");
 
 :root {
-  --ff-sans-serif: 'Roboto Condensed', sans-serif;
+	--ff-sans-serif: "Roboto Condensed", sans-serif;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 html {
-  font-size: 16px;
-  font-family: var(--ff-sans-serif);
-  width: 100vw;
+	font-size: 16px;
+	font-family: var(--ff-sans-serif);
+	width: 100vw;
+	background: #fefbe9;
 }

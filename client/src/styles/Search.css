@@ -1,98 +1,106 @@
 .Search__container {
-  padding: 1em;
-  height: 86vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	padding: 1em;
+	height: 86vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .Search__subheader {
-  margin: 1em 0;
-  text-align: center;
+	margin: 1em 0;
+	text-align: center;
 }
 
 .Search__suggestion--list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  justify-content: center;
-  margin: 1em 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+	justify-content: center;
+	margin: 1em 0;
 }
 
 .Search__suggestion {
-  background: #fec5bb;
-  padding: 0.5em 1.5em;
-  border: 4px solid #fec5bb;
-  border-radius: 30px;
-  text-align: center;
-  cursor: pointer;
+	background: #ecae6b;
+	font-size: 1.15rem;
+	padding: 0.5em 1.5em;
+	border: 2px solid #ecae6b;
+	border-radius: 30px;
+	color: black;
+	text-align: center;
+	cursor: pointer;
 }
 
 .active {
-  border: 4px solid #2f4858a2;
+	border: 4px solid #f0a04b;
 }
 
 .Search__form {
-  margin-top: 0.5em;
-  display: flex;
-  flex-direction: column;
+	margin: 2em 0;
+	display: flex;
+	flex-direction: column;
 }
 
 .Form__input {
-  font-size: 1.5rem;
-  font-family: var(--ff-sans-serif);
-  margin-bottom: 0.5em;
-  min-width: 250px;
-  line-height: 1.5;
-  padding: 0 0.25em;
-  text-align: center;
-  border: 1px solid black;
-  border-radius: 5px;
+	font-size: 1.5rem;
+	font-family: var(--ff-sans-serif);
+	margin-bottom: 0.5em;
+	min-width: 250px;
+	line-height: 1.5;
+	padding: 0 0.25em;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 .btn {
-  font-size: 1rem;
-  font-family: var(--ff-sans-serif);
-  padding: 0.75em 1em;
-  border-radius: 5px;
-  border: 1px solid #2f4858;
-  background: #2f4858;
-  color: #f8f9fa;
+	font-size: 1rem;
+	font-family: var(--ff-sans-serif);
+	padding: 0.75em 1em;
+	border-radius: 5px;
+	border: 1px solid #183a1d;
+	background: #183a1d;
+	color: #f8f9fa;
 }
 
 .Form__btn {
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 1em 1.5em;
+	max-width: 80%;
+	margin: 0 auto;
+	padding: 1em 1.5em;
 }
 
 .Search__random-btns-container {
-  margin: 2em 0.5em 0;
-  display: flex;
-  gap: 1em;
+	margin: 2em 0.5em 0;
+	display: flex;
+	gap: 1em;
+}
+
+.Search__btn--dinner {
+	color: #183a1d;
+	background-color: #b9c9b4;
+	border: 1px solid #b9c9b4;
 }
 
 @media screen and (min-width: 768px) {
-  .Search__container {
-    font-size: 1.1em;
-  }
-  
-  .Search__suggestion--list {
-    max-width: 600px;
-    gap: 2em;
-    margin: 2em 0;
-  }
+	.Search__container {
+		font-size: 1.1em;
+	}
 
-  .Search__form {
-    margin: 1em 0;
-  }
+	.Search__suggestion--list {
+		max-width: 600px;
+		gap: 2em;
+		margin: 2em 0;
+	}
 
-  .Form__input {
-    font-size: 1.75em;
-  }
+	.Search__form {
+		margin: 1em 0;
+	}
 
-  .btn {
-    font-size: 1em;
-  }
+	.Form__input {
+		font-size: 1.75em;
+	}
+
+	.btn {
+		font-size: 1em;
+	}
 }

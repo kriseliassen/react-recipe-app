@@ -1,69 +1,73 @@
 .RecipeCard__container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  width: 300px;
-  position: relative;
-  background: #555f7741;
+	display: flex;
+	flex-direction: column;
+	/* border: 1px solid black; */
+	width: 300px;
+	position: relative;
+	background: #e1eedd;
+	color: #183a1d;
+	border-radius: 20px;
 }
 
 .RecipeCard__image {
-  width: 298px;
-  height: 175px;
-  object-fit: cover;
-  object-position: bottom;
+	border-radius: 20px 20px 0 0;
+	width: 298px;
+	height: 175px;
+	object-fit: cover;
+	object-position: bottom;
 }
 
 .RecipeCard__text {
-  padding: 1em;
+	padding: 1em;
 }
 
 .RecipeCard__text--title {
-  font-size: 1.5rem;
-  margin-bottom: 0.5em;
+	font-size: 1.5rem;
+	margin-bottom: 0.5em;
 }
 
 .RecipeCard__text--details {
-  margin: 0.25em 0;
+	margin: 0.25em 0;
 }
 
 .RecipeCard__diets {
-  margin-top: 0.5em;
+	margin-top: 0.5em;
 }
 
 .text--bold {
-  font-size: 1.1rem;
-  font-weight: bold;
+	font-size: 1.1rem;
+	font-weight: 900;
 }
 
 .RecipeCard__heart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 3rem;
-  background: rgba(255, 255, 255, 0.68);
-  border-radius: 0 0 0 50%;
-  padding: 0.2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 3rem;
+	background: rgba(255, 255, 255, 0.68);
+	border-radius: 0 0 0 50%;
+	color: transparent;
+	padding: 0.2em;
 }
 
 .liked {
-  background: rgba(255, 255, 255, 0.68);
-  color: red;
+	background: rgba(255, 255, 255, 0.68);
+	color: #183a1d;
 }
 
 @media screen and (min-width: 768px) {
-  .RecipeCard__container {
-    flex-direction: row;
-    width: 600px;
-    align-items: center;
-  }
+	.RecipeCard__container {
+		flex-direction: row;
+		width: 600px;
+		align-items: center;
+	}
 
-  .RecipeCard__heart {
-    top: 60%;
-    bottom: 0;
-    border-radius: 50% 0 0 0;
-  }
+	.RecipeCard__heart {
+		top: 60%;
+		bottom: 0;
+		border-radius: 50% 0 0 0;
+	}
 }

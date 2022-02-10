@@ -14,23 +14,9 @@ const app = express();
 const apiKey = process.env.SPOONACULAR_API_KEY;
 const apiUrl = `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`;
 
-const readFilePromise = promisify(fs.readFile);
-const writeFilePromise = promisify(fs.writeFile);
-
-const readDatabase = async (path) => {
-	const data = await readFilePromise(path, "utf-8");
-	console.log("read db", data);
-	return data;
-};
-
-const writeToDb = async (path, content) => {
-	await writeFilePromise(path, JSON.stringify(content));
-};
-
 // GET DINNERS BY SEARCH TERM
 app.get("/api/random/:tags", async (req, res) => {
 	const { tags } = req.params;
-	console.log("tags: ", tags);
 	const url = `${apiUrl}&number=3&tags=${tags}`;
 	const response = await axios.get(url);
 	res.json(response.data);
@@ -50,6 +36,4 @@ app.get("/api/random/breakfast", async (_, res) => {
 	res.json(response.data);
 });
 
-app.listen(PORT, () => {
-	console.log(`Server listening on ${PORT}`);
-});
+app.listen(PORT, () => {});
