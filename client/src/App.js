@@ -56,11 +56,11 @@ function App() {
 		return;
 	};
 
-	const addLikedRecipe = (clickedRecipe) => {
-		setLikedRecipes([...likedRecipes, clickedRecipe]);
+	const addLikedRecipe = (likedRecipe) => {
+		setLikedRecipes([...likedRecipes, likedRecipe]);
 		const updatedRecipes = recipes.map((recipe) => {
-			if (recipe.id === clickedRecipe.id) {
-				return clickedRecipe;
+			if (recipe.id === likedRecipe.id) {
+				return likedRecipe;
 			}
 			return recipe;
 		});
