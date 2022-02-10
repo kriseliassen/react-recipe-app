@@ -1,9 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import axios from "axios";
-import fs, { read, readFile } from "fs";
-import { promisify } from "util";
-import { v4 as uuidv4 } from "uuid";
 
 dotenv.config();
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RecipeCard from "./RecipeCard";
 import { Link } from "react-router-dom";
 import "../styles/Recipes.css";
@@ -10,6 +10,10 @@ const Recipes = ({
 	removeLikedRecipe,
 	setClickedRecipe,
 }) => {
+	useEffect(() => {
+		setClickedRecipe(null);
+	}, []);
+
 	let title = searchTags;
 	if (title === "dinner") {
 		title = "any dinners";

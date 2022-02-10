@@ -12,7 +12,7 @@ const RecipeCard = ({
 	const [isLiked, setIsLiked] = useState(false);
 
 	useEffect(() => {
-		const objectLikedInRecipe = recipe.isLiked;
+		const objectLikedInRecipe = !!recipe.isLiked;
 		if (objectLikedInRecipe) {
 			setIsLiked(true);
 		}

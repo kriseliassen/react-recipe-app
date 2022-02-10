@@ -56,8 +56,15 @@ function App() {
 		return;
 	};
 
-	const addLikedRecipe = (recipe) => {
-		setLikedRecipes([...likedRecipes, recipe]);
+	const addLikedRecipe = (clickedRecipe) => {
+		setLikedRecipes([...likedRecipes, clickedRecipe]);
+		const updatedRecipes = recipes.map((recipe) => {
+			if (recipe.id === clickedRecipe.id) {
+				return clickedRecipe;
+			}
+			return recipe;
+		});
+		setRecipes(updatedRecipes);
 		return;
 	};
 
@@ -76,7 +83,7 @@ function App() {
 		<div className="App__container">
 			<div className="App__navbar--container">
 				<p className="App__navbar--logo">What's for dinner?</p>
-				<Navbar recipes={recipes} />
+				<Navbar />
 			</div>
 			<Routes>
 				<Route

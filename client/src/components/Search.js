@@ -16,7 +16,7 @@ const Search = ({ getRandomRecipe, getRecipes, setSearchTags }) => {
 
 	const handleSubmit = async (e) => {
 		const searchTerm = [value];
-		console.log("searchTerm: ", searchTerm);
+
 		e.preventDefault();
 		setSearchTags(searchTerm + "");
 		getRecipes([...searchTerm, "dinner"]);

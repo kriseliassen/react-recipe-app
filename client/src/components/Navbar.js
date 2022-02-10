@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
-const Navbar = ({ recipes }) => {
+const Navbar = () => {
 	const [currentPage, setCurrentPage] = useState(null);
 
 	const pathname = window.location.pathname;
@@ -40,16 +40,14 @@ const Navbar = ({ recipes }) => {
 			>
 				Search
 			</Link>
-			{recipes && (
-				<Link
-					to="/recipes"
-					className={`Navbar__menu-item ${
-						currentPage === "/recipes" ? "current" : null
-					}`}
-				>
-					Recipes
-				</Link>
-			)}
+			<Link
+				to="/recipes"
+				className={`Navbar__menu-item ${
+					currentPage === "/recipes" ? "current" : null
+				}`}
+			>
+				Recipes
+			</Link>
 			<Link
 				to="/favourites"
 				className={`Navbar__menu-item ${
